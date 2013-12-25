@@ -31,7 +31,7 @@ About
 -----
 streamplot is just a proof of concept. It works for my own purposes but YMMV. It would be easy to inherit from the `StreamPlotter` class and add needed functionality.
 
-streamplot is free software licensed under the `GNU General Public License <http://www.gnu.org/licenses/gpl.html>`_.
+streamplot is free software licensed under the [GNU General Public License](http://www.gnu.org/licenses/gpl.html).
 
 | author | email |
 |:--:| :--: |
