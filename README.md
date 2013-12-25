@@ -2,14 +2,38 @@ streamplot
 ==========
 Matplotlib based real time plotting
     
-    $ somedatageneratingprocess | streamplot
-
 Installation
 ============
 There isn't any. You may want to move the streamplot.py file to somewhere on your `$PATH`, remove the `.py` extension and make it executable. For example:
 
     $ cp /path/to/streamplot.py ~/bin/streamplot
     $ chmod +x ~/bin/streamplot
+
+Usage
+=====
+streamplot is designed for use within a command line environment. All the following examples assume you've moved streamplot is somewhere on your `$PATH` and removed the `.py` extension. The simplest use case is
+
+    $ somedatageneratingprocess | python streamplot.py
+
+Buffering issues with pipes can cause the plot to not show until the the first process finishes. The simplest way to deal with this is use the [expect](http://expect.sourceforge.net/) [unbuffer](http://linuxcommand.org/man_pages/unbuffer1.html) command.
+
+    $ unbuffer somedatageneratingprocess | streamplot
+
+streamplot also can also save the final image to a file by passing an output file name with an extension supported by your matplotlib install.
+
+
+    $ somedatageneratingprocess | streamplot img.png
+
+For a list of available extensions in a python prompt type
+
+    >> import matplotlib.pyplot as plt
+    >> print plt.gcf().canvas.get_supported_filetypes()
+
+The streamplot repository also includes a simple script for generating random data for demo purposes. To run the demo 
+
+    $ python randomfeeder.py | streamplot
+
+Uncomment different `numlines` definitions in `randomfeeder.py` to produce different plots.
 
 Documentation
 =============
