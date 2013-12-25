@@ -33,9 +33,7 @@ streamplot is just a proof of concept. It works for my own purposes but YMMV. It
 
 streamplot is free software licensed under the `GNU General Public License <http://www.gnu.org/licenses/gpl.html>`_.
 
-========    ======================================
-author	    email       
-========    ======================================
-tllake      thom.l.lake@gmail.com
-========    ======================================
+| author | email |
+|:--:| :--: |
+| tllake | thom.l.lake@gmail.com |
 
