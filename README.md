@@ -1,6 +1,7 @@
 streamplot
 ==========
 Matplotlib based real time plotting
+    
     $ somedatageneratingprocess | streamplot
 
 Installation
