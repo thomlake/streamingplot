@@ -38,7 +38,7 @@ Documentation
 =============
 The `streamplot.py` file constains a class and driver for reading and plotting a stream of incoming data in real time. Any line beginning with `'>>'` is input to be plotted. Everything else will print to stdout.
 
-The stream can contain data for multiple plots (separated by `';'`) and multiple lines per plot (separated by spaces `' '`).
+The stream can contain data for multiple plots (separated by `';'`) and multiple lines per plot (separated by spaces `' '`). The first line beginning with `'>>'` defines the number of plots and number of lines per plot and all other lines are assumed to follow the same format.
 
 Sometimes an example is worth a thousand words. If we wanted to have 3 separate plots having 3, 2, and 4 lines respectively, the input stream should look something like:
 ```
