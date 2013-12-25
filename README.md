@@ -6,7 +6,7 @@ Matplotlib based real time plotting
 
 Installation
 ============
-There isn't really any. You may want to move the streamplot.py file to somewhere on your `$PATH`, remove the `.py` extension and make it executable. For example:
+There isn't any. You may want to move the streamplot.py file to somewhere on your `$PATH`, remove the `.py` extension and make it executable. For example:
 
     $ cp /path/to/streamplot.py ~/bin/streamplot
     $ chmod +x ~/bin/streamplot
