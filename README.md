@@ -20,18 +20,18 @@ Buffering issues with pipes can cause the plot to not show until the the first p
 $ unbuffer somedatageneratingprocess | streamplot
 ```
 streamplot also can also save the final image to a file by passing an output file name with an extension supported by your matplotlib install.
-```
+
 $ somedatageneratingprocess | streamplot img.png
-```
+
 For a list of available extensions in a python prompt type
 ```python
 >> import matplotlib.pyplot as plt
 >> print plt.gcf().canvas.get_supported_filetypes()
 ```
 The streamplot repository also includes a simple script for generating random data for demo purposes. To run the demo 
-```
-$ python randomfeeder.py | streamplot
-```
+
+::sh $ python randomfeeder.py | streamplot
+
 Uncomment different `numlines` definitions in `randomfeeder.py` to produce different plots.
 
 Documentation
