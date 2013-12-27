@@ -62,7 +62,7 @@ TODO
  - Add legend functionality
  - Add support for color specification
  - Add support for creating animations
- - I realized the is already a `streamplot` command in matplotlib, maybe a renaming is needed
+ - There is already a `streamplot` command in matplotlib, maybe a renaming is needed
 
 
 About
