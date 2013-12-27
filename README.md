@@ -44,7 +44,7 @@ Uncomment different `numlines` definitions in `randomfeeder.py` to produce diffe
 
 Documentation
 =============
-The `streamplot.py` file constains a class and driver for reading and plotting a stream of incoming data in real time. Any line beginning with `'>>'` is input to be plotted. Everything else will print to stdout.
+The `streamplot.py` file contains a class and driver for reading and plotting a stream of incoming data in real time. Any line beginning with `'>>'` is input to be plotted. Everything else will print to stdout.
 
 The stream can contain data for multiple plots (separated by `';'`) and multiple lines per plot (separated by spaces `' '`). The first line beginning with `'>>'` defines the number of plots and number of lines per plot and all other lines are assumed to follow the same format.
 
@@ -56,6 +56,13 @@ some status message
 >> 0 1 2; 3 4; 5 6 7 8; 
 another status message
 ```
+
+TODO
+====
+ - [] Add legend functionality
+ - [] Add support for color specification
+ - [] Add support for creating animations
+
 
 About
 -----
