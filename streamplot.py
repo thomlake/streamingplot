@@ -40,8 +40,11 @@ class StreamPlotter(object):
         # initialize plot
         fig = plt.figure()
         h, w = get_dimensions(self.num_plots)
+        self.iteration = 0
         self.axs = [fig.add_subplot(h, w, i) for i in range(1, h * w + 1)]
-        plt.show(block=False)
+        # turn on interactive mode and show the plot
+        plt.ion()
+        plt.show()
 
     def append(self, mat):
         """Add data to the plots. mat is assumed to
@@ -58,6 +61,8 @@ class StreamPlotter(object):
             for seq, c in zip(subseqs, colors):
                 ax.plot(seq, color=c)
         plt.draw()
+        #plt.savefig('./img/img{0:02d}.png'.format(self.iteration))
+        self.iteration += 1
 
 def parseline(line):
     try:
