@@ -28,11 +28,19 @@ For a list of available extensions in a python prompt type
 >> import matplotlib.pyplot as plt
 >> print plt.gcf().canvas.get_supported_filetypes()
 ```
+
+Demo
+====
 The streamplot repository also includes a simple script for generating random data for demo purposes. To run the demo 
 ```
 $ python randomfeeder.py | streamplot
 ```
+
+Here's an example of the output ![demo](https://raw.github.com/thomlake/streamplot/master/demo.gif)
+
+
 Uncomment different `numlines` definitions in `randomfeeder.py` to produce different plots.
+
 
 Documentation
 =============
