@@ -106,10 +106,8 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--plot-marker', default='>>', 
                         help='string indicating line contains data to plot')
     args = parser.parse_args()
-    print args
-    exit()
     try:
-        streamplot(sys.stdin)
+        streamplot(sys.stdin, args.plot_marker)
     except KeyboardInterrupt:
         pass
     if args.output is not None:
