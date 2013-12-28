@@ -67,13 +67,13 @@ def parseline(line):
     except ValueError:
         return []
 
-def streamplot(f):
+def streamplot(f, pmark):
     # priming read
     primed = False
     while not primed:
         line = f.readline()
-        if line.startswith('>>'):
-            data = parseline(line[2:])
+        if line.startswith(pmark):
+            data = parseline(line[len(pmark):])
             if not len(data):
                 print line
             else:
@@ -88,8 +88,8 @@ def streamplot(f):
     line = f.readline()
     while line:
         line = line.strip()
-        if line.startswith('>>'):
-            data = parseline(line[2:])
+        if line.startswith(pmark):
+            data = parseline(line[len(pmark):])
             if not len(data): 
                 print line
             else:
@@ -101,8 +101,13 @@ def streamplot(f):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('output', nargs='?')
+    parser.add_argument('output', nargs='?', 
+                        help='if given, write final image to the given output file')
+    parser.add_argument('-p', '--plot-marker', default='>>', 
+                        help='string indicating line contains data to plot')
     args = parser.parse_args()
+    print args
+    exit()
     try:
         streamplot(sys.stdin)
     except KeyboardInterrupt:

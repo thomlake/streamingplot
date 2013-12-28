@@ -9,6 +9,22 @@ There isn't any. You may want to move the `streamplot.py` file to somewhere on y
 $ cp /path/to/streamplot.py ~/bin/streamplot
 $ chmod +x ~/bin/streamplot
 ```
+
+Documentation
+=============
+The `streamplot.py` file contains a class and driver for reading and plotting a stream of incoming data from stdin in real time. Any line beginning with with `PLOT_MARKER` (defaults to `'>>'`) is input to be plotted. Everything else will print to stdout.
+
+The stream can contain data for multiple plots (separated by `';'`) and multiple lines per plot (separated by spaces `' '`). The first line beginning with `PLOT_MARKER` defines the number of plots and number of lines per plot and all other lines are assumed to follow the same format.
+
+Sometimes an example is worth a thousand words. If we wanted to have 3 separate plots having 3, 2, and 4 lines respectively, the input stream should look something like:
+```
+>> 1 2 3; 4 5; 6 7 8 9;
+>> 0.5 1.5 2.5; 3.5 4.5; 5.5 6.5 7.5 8.5;
+some status message
+>> 0 1 2; 3 4; 5 6 7 8; 
+another status message
+```
+
 Usage
 =====
 streamplot is designed for use within a command line environment. All the following examples assume you've moved streamplot somewhere on your `$PATH`, removed the `.py` extension, and made it executable as described in the Installation section above. The simplest use case is
@@ -28,6 +44,23 @@ For a list of available extensions in a python prompt type
 >> import matplotlib.pyplot as plt
 >> print plt.gcf().canvas.get_supported_filetypes()
 ```
+To specify an alternate `PLOT_MARKER` use the `-p` flag
+```
+$ somedatageneratingprocess | streamplot -p "error ="
+```
+For usage information type
+```
+$ streamplot -h
+usage: streamplot.py [-h] [-p PLOT_MARKER] [output]
+
+positional arguments:
+  output                if given, write final image to the given output file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PLOT_MARKER, --plot-marker PLOT_MARKER
+                        string indicating line contains data to plot
+```
 
 Demo
 ====
@@ -41,21 +74,6 @@ Here's an example of the output ![demo](https://raw.github.com/thomlake/streampl
 
 Uncomment different `numlines` definitions in `randomfeeder.py` to produce different plots.
 
-
-Documentation
-=============
-The `streamplot.py` file contains a class and driver for reading and plotting a stream of incoming data in real time. Any line beginning with `'>>'` is input to be plotted. Everything else will print to stdout.
-
-The stream can contain data for multiple plots (separated by `';'`) and multiple lines per plot (separated by spaces `' '`). The first line beginning with `'>>'` defines the number of plots and number of lines per plot and all other lines are assumed to follow the same format.
-
-Sometimes an example is worth a thousand words. If we wanted to have 3 separate plots having 3, 2, and 4 lines respectively, the input stream should look something like:
-```
->> 1 2 3; 4 5; 6 7 8 9;
->> 0.5 1.5 2.5; 3.5 4.5; 5.5 6.5 7.5 8.5;
-some status message
->> 0 1 2; 3 4; 5 6 7 8; 
-another status message
-```
 
 TODO
 ====
