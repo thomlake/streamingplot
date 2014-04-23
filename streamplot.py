@@ -146,24 +146,26 @@ def streamplot(stream, plotmarker, rowsep, colsep, labelmat=None, colormat=None)
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('output', nargs='?', 
-                        help='output file name')
+                        help="output file name")
     parser.add_argument('-p', '--plot-marker', default='>>', 
-                        help='string indicating line contains data to plot. Defaults to ">>"')
+                        help="string indicating line contains data to plot. Defaults to '>>'")
     parser.add_argument('-R', '--row-sep', default=';',
-                        help='delimits data for different subplots. Defaults to ";"')
+                        help="delimits data for different subplots. Defaults to ';'")
     parser.add_argument('-C', '--col-sep', default=' ',
-                        help='delimits data for the same subplot. Defaults to " "')
+                        help="delimits data for the same subplot. Defaults to ' '")
     parser.add_argument('-l', '--labels', default=None, 
-                        help='string of labels. \
-                              " " delimits labels for the same subplot. \
-                              ";" delimits lists of subplot labels \
-                              example: "a1 a2; b1 b2 b3"')
+                        help="string of labels. \
+                              ' ' delimits labels for the same subplot. \
+                              ';' delimits lists of subplot labels \
+                              example: 'a1 a2; b1 b2 b3'")
     parser.add_argument('-c', '--colors', default=None, 
-                        help='string of colors using the same format as labels.\
-                              Can be any valid matplotlib color')
+                        help="string of colors using the same format as labels.\
+                              Can be any valid matplotlib color")
     args = parser.parse_args()
     labelmat = None if args.labels is None else matsplit(args.labels)
     colormat = None if args.colors is None else matsplit(args.colors)
+    #print args.row_sep, args.col_sep
+    #exit()
     try:
         streamplot(sys.stdin, args.plot_marker, args.row_sep, args.col_sep, labelmat, colormat)
     except KeyboardInterrupt:

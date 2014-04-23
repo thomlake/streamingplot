@@ -14,7 +14,7 @@ Documentation
 =============
 The `streamplot.py` file contains a class and driver for reading and plotting a stream of incoming data from stdin in real time. Any line beginning with with `PLOT_MARKER` (defaults to `'>>'`) is input to be plotted. Everything else will print to stdout.
 
-The stream can contain data for multiple plots (separated by `';'`) and multiple lines per plot (separated by spaces `' '`). The first line beginning with `PLOT_MARKER` defines the number of plots and number of lines per plot and all other lines are assumed to follow the same format.
+The stream can contain data for multiple subplots (separated by `ROW_SEP`) and multiple lines per plot (separated by spaces `COL_SEP`). `ROW_SEP` and `COL_SEP` default to `';'` and `' '` respectively. The first line beginning with `PLOT_MARKER` defines the number of plots and number of lines per plot and all other lines are assumed to follow the same format.
 
 Sometimes an example is worth a thousand words. If we wanted to have 3 separate plots having 3, 2, and 4 lines respectively, the input stream should look something like:
 ```
@@ -44,22 +44,48 @@ For a list of available extensions in a python prompt type
 >> import matplotlib.pyplot as plt
 >> print plt.gcf().canvas.get_supported_filetypes()
 ```
-To specify an alternate `PLOT_MARKER` use the `-p` flag
+To specify an alternate `PLOT_MARKER` use the `-p`
 ```
-$ somedatageneratingprocess | streamplot -p "error ="
+$ somedatageneratingprocess | streamplot -p 'error ='
 ```
-For usage information type
+To specify alternate `ROW_SEP` or `COL_SEP` use `-R` or `-C`
+```
+$ somedatageneratingprocess | streamplot -R $'\t' -C ','
+```
+To add labels use `-l`
+```
+$ somedatageneratingprocess | streamplot -l 'a1 a2 a3; b1 b2; c1'
+```
+To add specify colors use `-c`
+```
+$ somedatageneratingprocess | streamplot -l 'r r r; b b; g'
+```
+For full usage information type
 ```
 $ streamplot -h
-usage: streamplot.py [-h] [-p PLOT_MARKER] [output]
+usage: streamplot.py [-h] [-p PLOT_MARKER] [-R ROW_SEP] [-C COL_SEP]
+                     [-l LABELS] [-c COLORS]
+                     [output]
 
 positional arguments:
-  output                if given, write final image to the given output file
+  output                output file name
 
 optional arguments:
   -h, --help            show this help message and exit
   -p PLOT_MARKER, --plot-marker PLOT_MARKER
-                        string indicating line contains data to plot
+                        string indicating line contains data to plot. Defaults
+                        to ">>"
+  -R ROW_SEP, --row-sep ROW_SEP
+                        delimits data for different subplots. Defaults to ";"
+  -C COL_SEP, --col-sep COL_SEP
+                        delimits data for the same subplot. Defaults to " "
+  -l LABELS, --labels LABELS
+                        string of labels. " " delimits labels for the same
+                        subplot. ";" delimits lists of subplot labels example:
+                        "a1 a2; b1 b2 b3"
+  -c COLORS, --colors COLORS
+                        string of colors using the same format as labels. Can
+                        be any valid matplotlib color
 ```
 
 Demo
