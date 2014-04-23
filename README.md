@@ -105,8 +105,8 @@ TODO
 ====
 - [X] Add legend functionality
 - [X] Add support for color specification
-- [  ] Add support for creating animations
-- [  ] There is already a `streamplot` command in matplotlib, maybe a renaming is needed
+- [&nbsp;] Add support for creating animations
+- [&nbsp;] There is already a `streamplot` command in matplotlib, maybe a renaming is needed
 
 
 About
