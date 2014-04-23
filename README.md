@@ -98,13 +98,13 @@ $ python randomfeeder.py | streamplot
 Here's an example of the output ![demo](https://raw.github.com/thomlake/streamplot/master/demo.gif)
 
 
-Uncomment different `numlines` definitions in `randomfeeder.py` to produce different plots.
+Uncomment different `numlines` definitions in `randomfeeder.py` to produce different example plots.
 
 
 TODO
 ====
- - Add legend functionality
- - Add support for color specification
+ - [x] Add legend functionality
+ - [x] Add support for color specification
  - Add support for creating animations
  - There is already a `streamplot` command in matplotlib, maybe a renaming is needed
 
