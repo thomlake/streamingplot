@@ -44,7 +44,7 @@ For a list of available extensions in a python prompt type
 >> import matplotlib.pyplot as plt
 >> print plt.gcf().canvas.get_supported_filetypes()
 ```
-To specify an alternate `PLOT_MARKER` use the `-p`
+To specify an alternate `PLOT_MARKER` use `-p`
 ```
 $ somedatageneratingprocess | streamplot -p 'error ='
 ```

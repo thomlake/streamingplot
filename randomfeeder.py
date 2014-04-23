@@ -20,8 +20,8 @@ numlines = [3, 2, 1]
 #numlines = [3, 2, 1, 5, 2, 7, 11, 9]
 #numlines = [5]
 PLOT_MARKER = '>>'
-ROW_SEP = '\t'
-COL_SEP = ','
+ROW_SEP = ';'
+COL_SEP = ' '
 
 
 def randstr():
