@@ -103,10 +103,10 @@ Uncomment different `numlines` definitions in `randomfeeder.py` to produce diffe
 
 TODO
 ====
-- [λ] Add legend functionality
-- [x] Add support for color specification
-- [ ] Add support for creating animations
-- [ ] There is already a `streamplot` command in matplotlib, maybe a renaming is needed
+- [X] Add legend functionality
+- [X] Add support for color specification
+- [  ] Add support for creating animations
+- [  ] There is already a `streamplot` command in matplotlib, maybe a renaming is needed
 
 
 About
