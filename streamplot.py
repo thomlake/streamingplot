@@ -87,22 +87,23 @@ class StreamPlotter(object):
             subplot.draw(ax)
         plt.draw()
 
-def matsplit(string, rowsep=';', colsep=' ', f=None):
+def matsplit(string, rowsep=';', colsep=',', f=None):
     if f is None:
         return [[x.strip() for x in row.strip().split(colsep)] 
                            for row in string.strip().split(rowsep)]
     return [[f(x.strip()) for x in row.strip().split(colsep)] 
                           for row in string.strip().split(rowsep)]
 
-def parseline(line, rowsep=';', colsep=' '):
+def parseline(line, rowsep=';', colsep=','):
     try:
         return matsplit(line, rowsep, colsep, f=float)
     except ValueError:
         return []
 
-def streamplot(stream, plotmarker, rowsep, colsep, labelmat=None, colormat=None):
+def streamplot(stream, plotmarker, rowsep, colsep, labelmat=None, colormat=None, animate=False, output=None):
     # priming read
     primed = False
+    iteration = 0
     while not primed:
         line = stream.readline()
         if line.startswith(plotmarker):
@@ -125,6 +126,9 @@ def streamplot(stream, plotmarker, rowsep, colsep, labelmat=None, colormat=None)
                 plotter = StreamPlotter(subplots)
                 plotter.append(data)
                 plotter.draw()
+                if animate: plt.savefig(output.format(iteration))
+                iteration += 1 
+
                 primed = True
         else:
             print line,
@@ -139,36 +143,68 @@ def streamplot(stream, plotmarker, rowsep, colsep, labelmat=None, colormat=None)
             else:
                 plotter.append(data)
                 plotter.draw()
+                if animate: plt.savefig(output.format(iteration))
+                iteration += 1
         else:
             print line
         line = stream.readline()
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('output', nargs='?', 
                         help="output file name")
-    parser.add_argument('-p', '--plot-marker', default='>>', 
-                        help="string indicating line contains data to plot. Defaults to '>>'")
-    parser.add_argument('-R', '--row-sep', default=';',
-                        help="delimits data for different subplots. Defaults to ';'")
-    parser.add_argument('-C', '--col-sep', default=' ',
-                        help="delimits data for the same subplot. Defaults to ' '")
-    parser.add_argument('-l', '--labels', default=None, 
-                        help="string of labels. \
-                              ' ' delimits labels for the same subplot. \
-                              ';' delimits lists of subplot labels \
-                              example: 'a1 a2; b1 b2 b3'")
-    parser.add_argument('-c', '--colors', default=None, 
-                        help="string of colors using the same format as labels.\
-                              Can be any valid matplotlib color")
+    hstr = '\n'.join(("string indicating line contains data to plot",
+                      "default: '>'"))
+    parser.add_argument('-p', '--plot-marker', default='>>', help=hstr)
+    
+    hstr = '\n'.join(("delimits data for different subplots",
+                      "default: ';'"))
+    parser.add_argument('-R', '--row-sep', default=';', help=hstr)
+
+    hstr = '\n'.join(("delimits data for the same subplot",
+                      "default: ','"))
+    parser.add_argument('-C', '--col-sep', default=',', help=hstr)
+
+    hstr = '\n'.join(("string of labels",
+                      "';' delimits sets of labels for different subplots",
+                      "',' delimits different labels",
+                      "example:", 
+                      "'a1, a2; b1, b2, b3'"))
+    parser.add_argument('-l', '--labels', default=None, help=hstr)
+
+    hstr = '\n'.join(("string of colors",
+                      "Uses the same format as labels.",
+                      "Can be any valid matplotlib color.",
+                      "examples:", 
+                      "'red, blue; red, blue, green'",
+                      "'r, b; r, b, g'"))
+    parser.add_argument('-c', '--colors', default=None, help=hstr)
+
+    hstr = '\n'.join(("save the plot each time it is updated",
+                      "Requires output which is assumed to be a format",
+                      "string with a single place holder for time.",
+                      "example: './res/img{0}.png'"))
+    parser.add_argument('-a', '--animate', action='store_true', help=hstr)
+                        
     args = parser.parse_args()
+    if args.animate and args.output is None:
+        parser.error('--animate requires an output destination')
+
     labelmat = None if args.labels is None else matsplit(args.labels)
     colormat = None if args.colors is None else matsplit(args.colors)
     #print args.row_sep, args.col_sep
+    #print labelmat
     #exit()
     try:
-        streamplot(sys.stdin, args.plot_marker, args.row_sep, args.col_sep, labelmat, colormat)
+        streamplot(sys.stdin, 
+                   args.plot_marker, 
+                   args.row_sep, 
+                   args.col_sep, 
+                   labelmat,
+                   colormat,
+                   args.animate,
+                   args.output)
     except KeyboardInterrupt:
         pass
-    if args.output is not None:
+    if args.output is not None and not args.animate:
         plt.savefig(args.output)

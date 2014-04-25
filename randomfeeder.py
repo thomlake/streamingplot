@@ -21,7 +21,7 @@ numlines = [3, 2, 1]
 #numlines = [5]
 PLOT_MARKER = '>>'
 ROW_SEP = ';'
-COL_SEP = ' '
+COL_SEP = ', '
 
 
 def randstr():
