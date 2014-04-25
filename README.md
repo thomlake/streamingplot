@@ -56,7 +56,7 @@ To add labels use `-l`
 ```
 $ somedatageneratingprocess | streamplot -l 'a1, a2, a3; b1, b2; c1'
 ```
-To add specify colors use `-c`
+To specify colors use `-c`
 ```
 $ somedatageneratingprocess | streamplot -l 'r, r, r; b, b; g'
 ```
