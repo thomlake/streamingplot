@@ -27,7 +27,7 @@ another status message
 
 Usage
 =====
-streamingplot is designed for use within a command line environment. All the following examples assume you've moved streamingplot somewhere on your `$PATH`, removed the `.py` extension, and made it executable as described in the Installation section above. The simplest use case is
+streamingplot is designed for use within a command line environment. All the following examples assume you've moved `streamingplot.py` somewhere on your `$PATH`, removed the `.py` extension, and made it executable as described in the Installation section above. The simplest use case is
 ```
 $ somedatageneratingprocess | python streamingplot.py
 ```
