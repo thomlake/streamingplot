@@ -102,8 +102,8 @@ optional arguments:
                             Requires output which is assumed to be a format
                             string with a single place holder for time.
                             example:
-                                './res/img{0}.png'```
-
+                                './res/img{0}.png'
+```
 Demo
 ====
 The streamingplot repository also includes a simple script for generating random data for demo purposes. To run the demo 
