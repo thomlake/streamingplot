@@ -12,7 +12,7 @@ $ chmod +x ~/bin/streamingplot
 
 Documentation
 =============
-The `streamplot.py` file contains a class and driver for reading and plotting a stream of incoming data from stdin in real time. Any line beginning with with `PLOT_MARKER` (defaults to `'>>'`) is input to be plotted. Everything else will print to stdout.
+The `streamingplot.py` file contains a class and driver for reading and plotting a stream of incoming data from stdin in real time. Any line beginning with with `PLOT_MARKER` (defaults to `'>>'`) is input to be plotted. Everything else will print to stdout.
 
 The stream can contain data for multiple subplots (separated by `ROW_SEP`) and multiple lines per plot (separated by spaces `COL_SEP`). `ROW_SEP` and `COL_SEP` default to `';'` and `','` respectively. The first line beginning with `PLOT_MARKER` defines the number of plots and number of lines per plot and all other lines are assumed to follow the same format.
 
@@ -27,17 +27,17 @@ another status message
 
 Usage
 =====
-streamplot is designed for use within a command line environment. All the following examples assume you've moved streamplot somewhere on your `$PATH`, removed the `.py` extension, and made it executable as described in the Installation section above. The simplest use case is
+streamingplot is designed for use within a command line environment. All the following examples assume you've moved streamingplot somewhere on your `$PATH`, removed the `.py` extension, and made it executable as described in the Installation section above. The simplest use case is
 ```
-$ somedatageneratingprocess | python streamplot.py
+$ somedatageneratingprocess | python streamingplot.py
 ```
 Buffering issues with pipes can cause the plot to not show until the the first process finishes. The simplest way to deal with this is use the [expect](http://expect.sourceforge.net/) [unbuffer](http://linuxcommand.org/man_pages/unbuffer1.html) command.
 ```
-$ unbuffer somedatageneratingprocess | streamplot
+$ unbuffer somedatageneratingprocess | streamingplot
 ```
-streamplot also can also save the final image to a file by passing an output file name with an extension supported by your matplotlib install.
+streamingplot also can also save the final image to a file by passing an output file name with an extension supported by your matplotlib install.
 ```
-$ somedatageneratingprocess | streamplot img.png
+$ somedatageneratingprocess | streamingplot img.png
 ```
 For a list of available extensions in a python prompt type
 ```python
@@ -46,28 +46,28 @@ For a list of available extensions in a python prompt type
 ```
 To specify an alternate `PLOT_MARKER` use `-p`
 ```
-$ somedatageneratingprocess | streamplot -p 'error ='
+$ somedatageneratingprocess | streamingplot -p 'error ='
 ```
 To specify alternate `ROW_SEP` or `COL_SEP` use `-R` or `-C`
 ```
-$ somedatageneratingprocess | streamplot -R $'\t' -C ' '
+$ somedatageneratingprocess | streamingplot -R $'\t' -C ' '
 ```
 To add labels use `-l`
 ```
-$ somedatageneratingprocess | streamplot -l 'a1, a2, a3; b1, b2; c1'
+$ somedatageneratingprocess | streamingplot -l 'a1, a2, a3; b1, b2; c1'
 ```
 To specify colors use `-c`
 ```
-$ somedatageneratingprocess | streamplot -l 'r, r, r; b, b; g'
+$ somedatageneratingprocess | streamingplot -l 'r, r, r; b, b; g'
 ```
 To save the plot every time is is updated use the `-a` and an output format string
 ```
-$ somedatageneratingprocess | streamplot -a ./plots/iteration{0}.png
+$ somedatageneratingprocess | streamingplot -a ./plots/iteration{0}.png
 ```
 For full usage information type
 ```
-$ streamplot -h
-usage: streamplot.py [-h] [-p PLOT_MARKER] [-R ROW_SEP] [-C COL_SEP]
+$ streamingplot -h
+usage: streamingplot.py [-h] [-p PLOT_MARKER] [-R ROW_SEP] [-C COL_SEP]
                      [-l LABELS] [-c COLORS] [-a]
                      [output]
 
@@ -106,12 +106,12 @@ optional arguments:
 
 Demo
 ====
-The streamplot repository also includes a simple script for generating random data for demo purposes. To run the demo 
+The streamingplot repository also includes a simple script for generating random data for demo purposes. To run the demo 
 ```
-$ python randomfeeder.py | streamplot
+$ python randomfeeder.py | streamingplot
 ```
 
-Here's an example of the output ![demo](https://raw.github.com/thomlake/streamplot/master/demo.gif)
+Here's an example of the output ![demo](https://raw.github.com/thomlake/streamingplot/master/demo.gif)
 
 
 Uncomment different `numlines` definitions in `randomfeeder.py` to produce different example plots.
@@ -122,14 +122,14 @@ TODO
 - [x] Add legend functionality
 - [x] Add support for color specification
 - [x] Add support for creating animations
-- [&nbsp;&nbsp;] There is already a `streamplot` command in matplotlib, maybe a renaming is needed
+- [&nbsp;&nbsp;] There is already a `streamingplot` command in matplotlib, maybe a renaming is needed
 
 
 About
 -----
-streamplot is just a proof of concept. It works for my own purposes but YMMV. It would be easy to inherit from the `StreamPlotter` class and add needed functionality.
+streamingplot is just a proof of concept. It works for my own purposes but YMMV. It would be easy to inherit from the `StreamPlotter` class and add needed functionality.
 
-streamplot is free software licensed under the [GNU General Public License](http://www.gnu.org/licenses/gpl.html).
+streamingplot is free software licensed under the [GNU General Public License](http://www.gnu.org/licenses/gpl.html).
 
 | author | email |
 |:--:| :--: |
