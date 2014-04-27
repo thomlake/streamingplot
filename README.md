@@ -33,7 +33,7 @@ $ somedatageneratingprocess | python streamingplot.py
 ```
 Buffering issues with pipes can cause the plot to not show until the the first process finishes. The simplest way to deal with this is use the [expect](http://expect.sourceforge.net/) [unbuffer](http://linuxcommand.org/man_pages/unbuffer1.html) command.
 ```
-$ unbuffer somedatageneratingprocess | streamingplot
+$ unbuffer -p somedatageneratingprocess | streamingplot
 ```
 streamingplot also can also save the final image to a file by passing an output file name with an extension supported by your matplotlib install.
 ```
