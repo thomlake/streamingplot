@@ -14,7 +14,7 @@ Documentation
 =============
 The `streamingplot.py` file contains a class and driver for reading and plotting a stream of incoming data from stdin in real time. Any line beginning with with `PLOT_MARKER` (defaults to `'>>'`) is input to be plotted. Everything else will print to stdout.
 
-The stream can contain data for multiple subplots (separated by `ROW_SEP`) and multiple lines per plot (separated by spaces `COL_SEP`). `ROW_SEP` and `COL_SEP` default to `';'` and `','` respectively. The first line beginning with `PLOT_MARKER` defines the number of plots and number of lines per plot and all other lines are assumed to follow the same format.
+The stream can contain data for multiple subplots (separated by `ROW_SEP`) and multiple lines per plot (separated by `COL_SEP`). `ROW_SEP` and `COL_SEP` default to `';'` and `','` respectively. The first line beginning with `PLOT_MARKER` defines the number of plots and number of lines per plot and all other lines are assumed to follow the same format.
 
 Sometimes an example is worth a thousand words. If we wanted to have 3 separate plots having 3, 2, and 4 lines respectively, the input stream should look something like:
 ```
