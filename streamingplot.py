@@ -161,36 +161,37 @@ if __name__ == '__main__':
     parser.add_argument('output', nargs='?', 
                         help="output file name")
     hstr = '\n'.join(("string indicating line contains data to plot",
-                      "default: '>'"))
+                      "    default: '>'"))
     parser.add_argument('-p', '--plot-marker', default='>>', help=hstr)
     
     hstr = '\n'.join(("delimits data for different subplots",
-                      "default: ';'"))
+                      "    default: ';'"))
     parser.add_argument('-R', '--row-sep', default=';', help=hstr)
 
     hstr = '\n'.join(("delimits data for the same subplot",
-                      "default: ','"))
+                      "    default: ','"))
     parser.add_argument('-C', '--col-sep', default=',', help=hstr)
 
     hstr = '\n'.join(("string of labels",
-                      "';' delimits sets of labels for different subplots",
-                      "',' delimits different labels",
-                      "example:", 
-                      "'a1, a2; b1, b2, b3'"))
+                      "    ';' delimits sets of labels for different subplots",
+                      "    ',' delimits different labels",
+                      "    example:", 
+                      "        'a1, a2; b1, b2, b3'"))
     parser.add_argument('-l', '--labels', default=None, help=hstr)
 
     hstr = '\n'.join(("string of colors",
-                      "Uses the same format as labels.",
-                      "Can be any valid matplotlib color.",
-                      "examples:", 
-                      "'red, blue; red, blue, green'",
-                      "'r, b; r, b, g'"))
+                      "    Uses the same format as labels.",
+                      "    Can be any valid matplotlib color.",
+                      "    examples:", 
+                      "        'red, blue; red, blue, green'",
+                      "        'r, b; r, b, g'"))
     parser.add_argument('-c', '--colors', default=None, help=hstr)
 
     hstr = '\n'.join(("save the plot each time it is updated",
-                      "Requires output which is assumed to be a format",
-                      "string with a single place holder for time.",
-                      "example: './res/img{0}.png'"))
+                      "    Requires output which is assumed to be a format",
+                      "    string with a single place holder for time.",
+                      "    example:",
+                      "        './res/img{0}.png'"))
     parser.add_argument('-a', '--animate', action='store_true', help=hstr)
                         
     args = parser.parse_args()

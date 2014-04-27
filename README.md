@@ -68,8 +68,8 @@ For full usage information type
 ```
 $ streamingplot -h
 usage: streamingplot.py [-h] [-p PLOT_MARKER] [-R ROW_SEP] [-C COL_SEP]
-                     [-l LABELS] [-c COLORS] [-a]
-                     [output]
+                        [-l LABELS] [-c COLORS] [-a]
+                        [output]
 
 positional arguments:
   output                output file name
@@ -78,31 +78,31 @@ optional arguments:
   -h, --help            show this help message and exit
   -p PLOT_MARKER, --plot-marker PLOT_MARKER
                         string indicating line contains data to plot
-                        default: '>'
+                            default: '>'
   -R ROW_SEP, --row-sep ROW_SEP
                         delimits data for different subplots
-                        default: ';'
+                            default: ';'
   -C COL_SEP, --col-sep COL_SEP
                         delimits data for the same subplot
-                        default: ','
+                            default: ','
   -l LABELS, --labels LABELS
                         string of labels
-                        ';' delimits sets of labels for different subplots
-                        ',' delimits different labels
-                        example:
-                        'a1, a2; b1, b2, b3'
+                            ';' delimits sets of labels for different subplots
+                            ',' delimits different labels
+                            example:
+                                'a1, a2; b1, b2, b3'
   -c COLORS, --colors COLORS
                         string of colors
-                        Uses the same format as labels.
-                        Can be any valid matplotlib color.
-                        examples:
-                        'red, blue; red, blue, green'
-                        'r, b; r, b, g'
+                            Uses the same format as labels.
+                            Can be any valid matplotlib color.
+                            examples:
+                                'red, blue; red, blue, green'
+                                'r, b; r, b, g'
   -a, --animate         save the plot each time it is updated
-                        Requires output which is assumed to be a format
-                        string with a single place holder for time.
-                        example: './res/img{0}.png'
-```
+                            Requires output which is assumed to be a format
+                            string with a single place holder for time.
+                            example:
+                                './res/img{0}.png'```
 
 Demo
 ====
