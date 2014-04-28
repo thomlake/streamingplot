@@ -7,7 +7,7 @@ email:
 date:
     2013.12.25
 file:
-    streamplot.py
+    streamingplot.py
 description:
     Class and driver for reading and plotting
     a stream of incoming data in real time.
@@ -107,7 +107,7 @@ def parseline(line, rowsep=';', colsep=','):
     except ValueError:
         return []
 
-def streamplot(stream, plotmarker, rowsep, colsep, labelmat=None, colormat=None, animate=False, output=None):
+def streamingplot(stream, plotmarker, rowsep, colsep, labelmat=None, colormat=None, animate=False, output=None):
     # priming read
     primed = False
     iteration = 0
@@ -204,14 +204,14 @@ if __name__ == '__main__':
     #print labelmat
     #exit()
     try:
-        streamplot(sys.stdin, 
-                   args.plot_marker, 
-                   args.row_sep, 
-                   args.col_sep, 
-                   labelmat,
-                   colormat,
-                   args.animate,
-                   args.output)
+        streamingplot(sys.stdin, 
+                      args.plot_marker, 
+                      args.row_sep, 
+                      args.col_sep, 
+                      labelmat,
+                      colormat,
+                      args.animate,
+                      args.output)
     except KeyboardInterrupt:
         pass
     if args.output is not None and not args.animate:
