@@ -108,13 +108,13 @@ Demo
 ====
 The streamingplot repository also includes a simple script for generating random data for demo purposes. To run the demo 
 ```
-$ python randomfeeder.py | streamingplot
+$ python randomstream.py | streamingplot
 ```
 
 Here's an example of the output ![demo](https://raw.github.com/thomlake/streamingplot/master/demo.gif)
 
 
-Uncomment different `numlines` definitions in `randomfeeder.py` to produce different example plots.
+Uncomment different `numlines` definitions in `randomstream.py` to produce different example plots.
 
 
 TODO
