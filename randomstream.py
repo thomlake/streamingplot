@@ -6,7 +6,7 @@ email:
 date:
     2013.12.25
 file:
-    randomfeeder.py
+    randomstream.py
 description:
     Generate random data, used to demo streamplot.py
 """
