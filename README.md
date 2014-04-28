@@ -122,8 +122,6 @@ TODO
 - [x] Add legend functionality
 - [x] Add support for color specification
 - [x] Add support for creating animations
-- [&nbsp;&nbsp;] There is already a `streamingplot` command in matplotlib, maybe a renaming is needed
-
 
 About
 -----
